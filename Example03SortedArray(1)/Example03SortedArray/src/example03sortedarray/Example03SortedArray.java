@@ -190,5 +190,35 @@ class SortedArray
      * Merging it with another array 1 3 9 15 will 
      * result in a new array 1 2 3 5 7 9 12 15
      */
-    
+
+    public void mergeArrays (int[] b)
+    {
+        int aSize = arr.length();
+        int bSize = b.length();
+        SortedArray mergedArray = new SortedArray(arr.length + b.length);
+
+        int i,j,k;
+        i = j = k = 0;
+
+        while(i < aSize && j < bSize)
+        {
+            if (arr[i] < b[j])
+            {
+                mergedArray[c++] = arr[i++];
+            }            
+            else
+            {
+                 mergedArray[c++] = b[j++];               
+            }
+        }
+        while(i < aSize)
+        {
+            mergedArray[c++] = arr[i++];
+        }
+        while(j < bSize)
+        {
+            mergedArray[c++] = b[j++];
+        }
+        arr = mergedArray;
+    }
 }
