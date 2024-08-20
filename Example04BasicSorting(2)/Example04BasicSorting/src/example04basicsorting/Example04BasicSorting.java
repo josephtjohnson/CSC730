@@ -234,5 +234,18 @@ class MyArray
      * For example, if the array contains 8 5 12 15 7 3 8 15 30 15
      * After calling the function, the array will become 3 5 7 8 12 15 30
      */
+    public void removeDuplicate()
+    {
+        arr.insertionSort();
+        int j = 0;
+        for (int i = 1; i < arr.length; i++)
+        {
+            if (arr[i] != arr[j])
+            {
+                j++;
+                arr[j] = arr[i];
+            }
+        }
+    }
     
 }
