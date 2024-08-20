@@ -193,8 +193,8 @@ class SortedArray
 
     public void mergeArrays (int[] b)
     {
-        int aSize = arr.length();
-        int bSize = b.length();
+        int aSize = arr.length;
+        int bSize = b.length;
         SortedArray mergedArray = new SortedArray(arr.length + b.length);
 
         int i,j,k;
@@ -202,11 +202,16 @@ class SortedArray
 
         while(i < aSize && j < bSize)
         {
-            if (arr[i] < b[j])
+            if (arr[i] == b[j])
+            {
+                mergedArray[c++] = arr[i++];
+                j++;
+            }  
+            else if (arr[i] < b[j])
             {
                 mergedArray[c++] = arr[i++];
             }            
-            else
+            else if (arr[i] > b[j])
             {
                  mergedArray[c++] = b[j++];               
             }
