@@ -58,6 +58,8 @@ public class Example02UnsortedArray
         else
             System.out.println(key + " has been removed!");
         arr.display();          // display all elements in the array
+
+        arr.reverseArray()
     }
 }
 
@@ -154,8 +156,16 @@ class UnsortedArray
      * For example, the array contains 50, 20, 30, 10, 40
      * After calling the function, the array will become 40, 20, 30, 10, 50
      */
-    
-    
+    public void reverseArray()
+    {
+        for (i = 0, i < n/2; i++)
+        {
+            temp = a[i];
+            a[i] = a[n-i-1];
+            a[n-i-1] = temp;
+        }
+    }    
+
     /**
      * 
      * Practice problem 2:
@@ -163,6 +173,15 @@ class UnsortedArray
      * For example, the array contains 50, 20, 30, 10, 40
      * After calling the function, the array will become 20, 30, 10, 40, 50
      */
+    public void leftRotateArray()
+    {
+        int temp = a[0];
+        for (i = 1; i < n; i++)
+        {
+            a[i-1] = a[i];          
+        }
+        a[n-1] = temp;
+    }
     
     
     /**
@@ -172,6 +191,15 @@ class UnsortedArray
      * For example, the array contains 50, 20, 30, 10, 40
      * After calling the function, the array will become 40, 50, 20, 30, 10
      */
+    public void rightRotateArray()
+    {
+        int temp = a[n-1];
+        for (i = n-2; i > 0; i--)
+        {
+            a[i+1] = a[i];          
+        }
+        a[0] = temp;
+    }
     
     
 }
