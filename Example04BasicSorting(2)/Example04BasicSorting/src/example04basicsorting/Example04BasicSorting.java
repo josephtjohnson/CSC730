@@ -159,6 +159,7 @@ class MyArray
      */
     public void bubbleSort()
     {
+        bool swapped = false;
         for (int i = n - 1; i > 1; i --)             
         {   // move the smallest element among a[0] ~ a[i] into a[i] by swapping
             
@@ -223,6 +224,31 @@ class MyArray
             }
     
             //a[j-1] = t;
+        }
+    }
+
+    public void oddevenSort()
+    {
+        bool swapped = true;
+        while(swapped)
+        {
+            swapped = false;
+            for (int j = 1; j < n-1; j+=2)
+            {
+                if (a[j] > a[j+1]
+                int t = a[j];
+                a[j] = a[j+1];
+                a[j+1] = t;
+                swapped = true;
+            }
+            for (int j = 0; j < n-1; j+=2)
+            {
+                if (a[j] > a[j+1]
+                int t = a[j];
+                a[j] = a[j+1];
+                a[j+1] = t;
+                swapped = true;
+            }            
         }
     }
     
