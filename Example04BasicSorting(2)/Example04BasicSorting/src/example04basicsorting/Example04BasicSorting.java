@@ -262,19 +262,16 @@ class MyArray
     public void removeDuplicate()
     {
         insertionSort();
-        int j,i;
-        i = j = 0;
-        for (i = 1; i < a.length; i++)
+        int current = 0;
+        int i;
+        for (i = 0; i < n-1; i++)
         {
-            if (a[j] != a[i])
+            if (a[i] != a[current])
             {
-                j++;
-            }
-            else
-            {
-                a[i] = a[i+1];
+                a[++current] = a[i]            
             }
         }
+        a.length = i;
     }
     
 }
