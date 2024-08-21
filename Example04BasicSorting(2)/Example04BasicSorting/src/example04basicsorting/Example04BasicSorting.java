@@ -159,39 +159,12 @@ class MyArray
      */
     public void bubbleSort()
     {
-        //boolean swapped = false;                // false: no swap happened during the current round
-        int min = 0;
-        int i,j,k = 0;
-        //outer loop controls traversing the array
-        for (i = 0; i < n; i++)
-        {
-            //inner loop #1 controls what the minimum value is
-            for (j = i; j < n; j++)
-            {
-                if (a[j] < a[min])
-                {
-                    min = a[j];
-                }
-            }
-            // inner loop #2 controls moving the smallest value to the beginning
-            for (k = min-1; k > i; k--)
-            {
-                int temp = a[k];
-                a[k] = a[min];
-                a[min] = temp;
-            }
-        }
-
-
-    }
-
-       /* 
         for (int i = n - 1; i > 1; i --)             
         {   // move the smallest element among a[0] ~ a[i] into a[i] by swapping
             
             for (int j = 0; j < i; j++)         // swap A[j] and A[j+1], if necessary
             {
-                if (a[j] > a[j + 1])
+                if (a[j] < a[j + 1])
                 {
                     int t = a[j];
                     a[j] = a[j + 1];
@@ -205,7 +178,7 @@ class MyArray
             
             swapped = false;
         }
-        *\
+        
     }
     
     /**
@@ -215,19 +188,19 @@ class MyArray
     public void selectionSort()
     {
         for (int i = 0; i < n; i ++)        
-        {   // find the smallest element among a[i] ~ a[n-1] and then swap it with a[i]
+        {   // find the largest element among a[i] ~ a[n-1] and then swap it with a[n-1]
             
-            int idxMin = i;                     // idxMin: index of the minimum element among a[i] ~ a[n-1]
+            int idxMax = i;                     // idxMin: index of the maximum element among a[i] ~ a[n-1]
             for (int j = i + 1; j < n; j ++)
             {
-                if (a[j] < a[idxMin])           // a smaller element, a[j], is found
-                    idxMin = j;
+                if (a[j] > a[idxMax])           // a larger element, a[j], is found
+                    idxMax = j;
             }
             
-            // swap a[i] with a[idxMin]
-            int t = a[i];
-            a[i] = a[idxMin];
-            a[idxMin] = t;
+            // swap a[i] with a[idxMax]
+            int t = a[n-1];
+            a[n-1] = a[idxMax];
+            a[idxMax] = t;
         }
     }
     
@@ -237,19 +210,19 @@ class MyArray
      */
     public void insertionSort()
     {
-        for (int i=1; i < n; i++)           
-        {   // insert a[i] into a[0] ~ a[i-1] so that a[0] ~ a[i] become sorted
-            
+        for (int i = n-1; i >= 0; i--)
+        {
             int t = a[i];
             int j;
-            for (j = i - 1; j >= 0; j --)
-            {
-                if (t < a[j])
-                    a[j+1] = a[j];
+            for (j = i + 1; j <= n; j++) {
+                if (t > a[j])
+                    a[j-1] = a[j];
+                    a[j] = t;
                 else
                     break;
             }
-            a[j + 1] = t;
+    
+            //a[j-1] = t;
         }
     }
     
