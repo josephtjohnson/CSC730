@@ -159,10 +159,35 @@ class MyArray
      */
     public void bubbleSort()
     {
-        boolean swapped = false;                // false: no swap happened during the current round
-        
+        //boolean swapped = false;                // false: no swap happened during the current round
+        int min = 0;
+        int i,j,k = 0;
+        //outer loop controls traversing the array
+        for (i = 0; i < n; i++)
+        {
+            //inner loop #1 controls what the minimum value is
+            for (j = i; j < n; j++)
+            {
+                if (a[j] < a[min])
+                {
+                    min = a[j];
+                }
+            }
+            // inner loop #2 controls moving the smallest value to the beginning
+            for (k = min-1; k > i; k--)
+            {
+                int temp = a[k];
+                a[k] = a[min];
+                a[min] = temp;
+            }
+        }
+
+
+    }
+
+       /* 
         for (int i = n - 1; i > 1; i --)             
-        {   // move the largest element among a[0] ~ a[i] into a[i] by swapping
+        {   // move the smallest element among a[0] ~ a[i] into a[i] by swapping
             
             for (int j = 0; j < i; j++)         // swap A[j] and A[j+1], if necessary
             {
@@ -180,6 +205,7 @@ class MyArray
             
             swapped = false;
         }
+        *\
     }
     
     /**
@@ -236,14 +262,18 @@ class MyArray
      */
     public void removeDuplicate()
     {
-        arr.insertionSort();
-        int j = 0;
-        for (int i = 1; i < arr.length; i++)
+        insertionSort();
+        int j,i;
+        i = j = 0;
+        for (i = 1; i < a.length; i++)
         {
-            if (arr[i] != arr[j])
+            if (a[j] != a[i])
             {
                 j++;
-                arr[j] = arr[i];
+            }
+            else
+            {
+                a[i] = a[i+1];
             }
         }
     }
