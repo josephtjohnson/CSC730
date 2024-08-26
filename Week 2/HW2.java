@@ -2,9 +2,9 @@ class StringProcessor
 {
   public static String processStringInput(String str) 
   {
-    string result;
     //Create a new stack
-    Stack<string> stack = new Stack<>();
+    Stack<string> stack = new Stack<>(str.length + );
+    string result;
     
     //add each character onto the stack
     foreach (char c in str)
@@ -20,9 +20,9 @@ class StringProcessor
       }
       
     }
-    while (!stack.empty()
+    for (int i = 0; i < stack.size(); i++)
     {
-      
+      result += stack[i];
     }
 
     return result;
@@ -30,8 +30,36 @@ class StringProcessor
 
   public static boolean isPalindrome(String str)
   {
-    bool isPalindrome = false;
+    bool isPalindrome = true;
 
+    //Create a new stack
+    Stack<string> stack = new Stack<>(str.length + );
+    string result;
+
+    int i, mid = str.length / 2;
+
+    for (i = 0; i < mid; i++)  
+    {
+      stack.push(str[i]);
+    }
+
+    if (length % 2 != 0) 
+    {
+        i++;
+    }
+
+    while (i < str.length)
+    {
+      char c = stack.pop();
+
+      if (c != str[i])
+      {
+        isPalindrome = false;
+        return isPalindrome;
+      }
+      i++;
+    }
+    return isPalindrome;
   }
 
   public static int checkZeroOne(String str)
