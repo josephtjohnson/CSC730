@@ -64,7 +64,70 @@ class StringProcessor
 
   public static int checkZeroOne(String str)
   {
-  // your code comes here ...
+
+    //Create a new stack
+    Stack<string> stack = new Stack<>(str.length + );
+    int result;
+    
+    int i;
+    while (stack.empty)
+    {
+      if (str[i] == "0" || str[i] == "1")
+      {
+        stack.push(str[i]);
+      }
+      else
+      {
+        i++;
+      }
+    }
+
+    if (!stack.empty)
+    {
+    char firstEncounter = stack.peek();
+      for(int j = i + 1; j < str.length; j++)
+      {
+        if (firstEncounter == "0")
+        {
+          if (str[j] == "0")
+          {
+            stack.push(str[j]);
+          }
+          else if (str[j] == "1")
+          {
+            stack.pop();
+          }
+        }
+        if (firstEncounter == "1")
+        {
+          if (str[j] == "1")
+          {
+            stack.push(str[j]);
+          }
+          else if (str[j] == "0")
+          {
+            stack.pop();
+          }
+        }
+      }
+      if (stack.empty())
+      {
+        result = 0
+      }
+      if (sneak.peek() == "0")
+      {
+        result = -1
+      }
+      else if (sneak.peek() == "1")
+      {
+        result = 1
+      }
+    }
+    else
+    {
+      result = 0;
+    }
+    return result;
   }
 
   public static void main(String[] args) 
