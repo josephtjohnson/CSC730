@@ -10,7 +10,19 @@ class StringProcessor
     foreach (char c in str)
     {
       //what happens if they start with a backspace?
-      if (c == "<")      
+      if (c == "<" && !stack.empty())
+      {
+        stack.pop();
+      }
+      else
+      {
+        stack.push(c);
+      }
+      
+    }
+    while (!stack.empty()
+    {
+      
     }
 
     return result;
