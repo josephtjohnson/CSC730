@@ -132,8 +132,6 @@ class StringProcessor
 
   public static void main(String[] args) 
   {
-
-  
     Scanner scanner = new Scanner(System.in);  //Create a Scanner object
     int quitCode;
     do
@@ -151,12 +149,34 @@ class StringProcessor
       {
         //process user input
         string processedUserInput = processStringInput(userInput);
+
+        System.out.println(string.format("After processing backspaces, the string becomes: {0}", processedUserInput));
       
         //check if palindrome
-        isPalindrome(processedUserInput);
+        bool isPalindrome = isPalindrome(processedUserInput);
+        if (isPalindrome)
+        {
+          System.out.println(string.format("{0} is a palindrome",processedUserInput));
+        }
+        else
+        {
+          System.out.println(string.format("{0} is not a palindrome",processedUserInput));
+        }
   
         //check zeros and ones
-        checkZeroOne(processedUserInput);
+        int checkZeroOneResult = checkZeroOne(processedUserInput);
+        if (checkZeroOneResult == -1)
+        {
+          System.out.println("More 0s than 1s");
+        }
+        if (checkZeroOneResult == 0)
+        {
+          System.out.println("Number of 0s is equal to number of 1s");
+        }
+        if (checkZeroOneResult == 1)
+        {
+          System.out.println("More 1s than 0s");
+        }
       }
       else
       {
