@@ -1,8 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package HW2;
+
+/**
+ *
+ * @author Johns
+ */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package HW2;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -89,8 +98,8 @@ class StringProcessor
     Stack<Character> stack = new Stack<>();
     int result = 0;
     
-    int i;
-    for (i = 0; i < str.length() - 1; i++) //what happens if the input has no zeros or ones?
+    int i = 0;
+    while(stack.empty() && i < str.length()) //what happens if the input has no zeros or ones?
     {
       if (str.charAt(i) == '0' || str.charAt(i) == '1')
       {
@@ -134,7 +143,7 @@ class StringProcessor
       {
         result = 0;
       }
-      if (stack.peek() == '0')
+      else if (stack.peek() == '0')
       {
         result = -1;
       }
@@ -203,3 +212,4 @@ class StringProcessor
     } while (true);
   }
 }
+
