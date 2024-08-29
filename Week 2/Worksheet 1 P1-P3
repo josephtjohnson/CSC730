@@ -1,0 +1,49 @@
+Problem 1
+Using manual transformation, write the following infix expressions in their equivalent 
+postfix forms.
+A*(B-C/2+D*E)-F/G
+
+ABC2/-DE*+*FG/-
+
+Problem 2
+Use a stack to help convert the following infix expression to its postfix notation. Show the 
+intermediate content of the stack and the postfix expression during the conversion.
+(A-2)*(B+C-D*E)*F-G/H
+
+Stack     Postfix
+(         
+(         A
+(-        A2
+          A2-
+*         A2-
+*(        A2-B
+*(+       A2-BC
+*(-       A2-BC+
+*(-       A2-BC+D
+*(-*      A2-BC+DE
+*         A2-BC+DE*-
+*         A2-BC+DE*-*
+*         A2-BC+DE*-*F
+-        A2-BC+DE*-*F*
+-        A2-BC+DE*-*F*G
+-/       A2-BC+DE*-*F*GH
+         A2-BC+DE*-*F*GH/-
+
+
+Problem 3
+Use a stack to help evaluate the following postfix expression. Show the intermediate content of 
+the stack during the evaluation.
+4 8 5 2 + * 3 5 + / -
+
+Stack
+4
+4 8
+4 8 5
+4 8 5 2  -> 5 + 2
+4 8 7
+4 56
+4 56 3
+4 56 3 5 -> 3 + 5
+4 56 8   -> 56 / 8
+4 7      -> 4 - 7
+-3       -> Result
