@@ -1,0 +1,31 @@
+Consider a queue implemented by an array of size 5, with variables front and rear
+keeping track of the indices of front and rear items of the queue. A sequence of operations is
+performed on the queue:
+enqueue ‘a’
+enqueue ‘b’
+enqueue ‘c’
+enqueue ‘d’
+dequeue
+dequeue
+enqueue ‘e’
+enqueue ‘f’
+dequeue
+enqueue ‘g’
+dequeue
+dequeue
+dequeue
+enqueue ‘h’
+
+After the above sequence of operations is completed, 
+a) What are the items that have been dequeued? List them in the order they are dequeued.
+b) What are the values of variables front and rear?
+c) What is the content of the queue?
+
+a: 
+a->b->c->d->e->f
+
+b:
+front = 1, rear = 2
+
+c:
+[-, g, h, -, -]
