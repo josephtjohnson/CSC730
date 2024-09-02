@@ -1,73 +1,68 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package HW2;
 
-/**
- *
- * @author Johns
- */
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Author: Joseph Johnson
+ * Date: 09/02/2024
+ * Class: CSC 730
+ * Assignment: Homework #2
  */
 
 import java.util.Scanner;
 import java.util.Stack;
 
-/**
- *
- * @author Johns
- */
 class StringProcessor
 {
+/*
+*This method takes a string from the user keyboard input and processes it.
+*/
   public static String processStringInput(String str) 
   {
     //Create a new stack
-    Stack<Character> stack = new Stack<>();
+    Stack<Character> stack = new Stack<>(); //instantiate new stack object
     
-    String reverse = "";
+    String reverse = ""; 
     String result = "";
     
     //add each character onto the stack
     for (int i = 0; i < str.length(); i++)
     {
-      if (str.charAt(i) == '<')
+      if (str.charAt(i) == '<') //if backspace then pop a character off if the stack isn't empty
       {
         if (!stack.empty())
         {
             stack.pop();
         }
       }
-      else
+      else //otherwise add the character to the stack
       {
         stack.push(str.charAt(i));
       }
       
     }
-    for (int i = 0; !stack.isEmpty(); i++)
+    for (int i = 0; !stack.isEmpty(); i++) //loop through stack
     {
-      reverse += stack.pop();
+      reverse += stack.pop(); //add characters to create a reverse string
     }
-    for (int i = reverse.length() - 1; i >= 0; i--)
+    for (int i = reverse.length() - 1; i >= 0; i--) //loop through reverse
     {
-        result += reverse.charAt(i);
+        result += reverse.charAt(i); //create the new unreversed string
     }
 
     return result;
   }
 
+  /*
+  *This method takes in a string and determines if it is a palindrome.
+  */
   public static boolean isPalindrome(String str)
   {
     Boolean isPalindrome = true;
 
-    //Create a new stack
-    Stack<Character> stack = new Stack<>();
+    Stack<Character> stack = new Stack<>(); //instantiate a new stack object
 
     int i, mid = str.length() / 2;
 
-    for (i = 0; i < mid; i++)  
+    for (i = 0; i < mid; i++)   //loop through string and add characters to stack up to the middle character
     {
       stack.push(str.charAt(i));
     }
@@ -77,11 +72,11 @@ class StringProcessor
         i++;
     }
 
-    while (i < str.length())
+    while (i < str.length()) //pop characters off and compare
     {
       char c = stack.pop();
 
-      if (c != str.charAt(i))
+      if (c != str.charAt(i)) //if the popped character does not match the string of the same element then not a palindrome.
       {
         isPalindrome = false;
         return isPalindrome;
@@ -91,17 +86,20 @@ class StringProcessor
     return isPalindrome;
   }
 
+  /*
+  *This method is a non-arithmetic way of determining the number of zeros and ones that exist in a string.
+  */
   public static int checkZeroOne(String str)
   {
 
     //Create a new stack
-    Stack<Character> stack = new Stack<>();
+    Stack<Character> stack = new Stack<>(); //instantiate a new stack object
     int result = 0;
     
     int i = 0;
-    while(stack.empty() && i < str.length()) //what happens if the input has no zeros or ones?
+    while(stack.empty() && i < str.length()) 
     {
-      if (str.charAt(i) == '0' || str.charAt(i) == '1')
+      if (str.charAt(i) == '0' || str.charAt(i) == '1') //check for ones and zeros and push
       {
         stack.push(str.charAt(i));
       }
@@ -113,41 +111,41 @@ class StringProcessor
 
     if (!stack.empty())
     {
-    char firstEncounter = stack.peek();
+    char firstEncounter = stack.peek(); //look at first element found
       for(int j = i + 1; j < str.length(); j++)
       {
-        if (firstEncounter == '0')
+        if (firstEncounter == '0') //if the first element is a zero
         {
-          if (str.charAt(j) == '0')
+          if (str.charAt(j) == '0') //and the encountered element is a zero
           {
-            stack.push(str.charAt(j));
+            stack.push(str.charAt(j)); //push to the stack
           }
-          else if (str.charAt(j) == '1')
+          else if (str.charAt(j) == '1') //otherwise remove a zero as we encountered a one
           {
             stack.pop();
           }
         }
-        if (firstEncounter == '1')
+        if (firstEncounter == '1') //if the first element is a one
         {
-          if (str.charAt(j) == '1')
+          if (str.charAt(j) == '1') //and the encountered element is a one
           {
-            stack.push(str.charAt(j));
+            stack.push(str.charAt(j)); // push to the stack
           }
-          else if (str.charAt(j) == '0')
+          else if (str.charAt(j) == '0') //otherwise remove a one as we encountered a zero
           {
             stack.pop();
           }
         }
       }
-      if (stack.empty())
+      if (stack.empty()) //if we have an empty stack then we have equal ones and zeros
       {
         result = 0;
       }
-      else if (stack.peek() == '0')
+      else if (stack.peek() == '0') //if we have a zero then more zeros than ones
       {
         result = -1;
       }
-      else if (stack.peek() == '1')
+      else if (stack.peek() == '1') //if we have a one then more ones than zeros
       {
         result = 1;
       }
