@@ -1,0 +1,24 @@
+Consider a priority queue implemented by an array of size 5, with variable front keeping
+track of the index of front item. Assume the smallest key is stored at the front of the priority 
+queue. A sequence of operations is performed on the priority queue:
+enqueue ‘c’
+enqueue ‘f’
+enqueue ‘a’
+enqueue ‘b’
+dequeue
+dequeue
+enqueue ‘h’
+enqueue ‘d’
+dequeue
+enqueue ‘g’
+dequeue
+dequeue
+dequeue
+enqueue ‘e’
+After the above sequence of operations is completed, what will be the
+a) What are the items that have been dequeued? List them in the order they are dequeued.
+a,b,c,d,f,g
+b) What are the values of variables front?
+c,c,a,a,b,c,c,c,d,d,f,g,h,e
+c) What is the content of the priority queue?
+[h,e, , , ]
