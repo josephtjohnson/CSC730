@@ -25,13 +25,45 @@ public class HW3
             switch (option)
             {
                 case 1:
-                    a.read();
+                    Scanner input = new Scanner(System.in);
+                    System.out.print("Enter elements (negative to end): ");
+                    int i;
+                    for (i = 0; i < a.length; i++)        // allow at most a.length elements to be stored into the array
+                    {
+                        int e = input.nextInt();
+                        
+                        if (e >= 0)
+                            a[i] = e;                   // store a non-negative number into the array 
+                        else                        
+                            break;
+                    }
                     break;
                 case 2:
-                    a.randGenerate();
+                    Scanner input = new Scanner(System.in);
+                    System.out.print("Enter the number of keys to generate: ");
+                    int n = input.nextInt();
+                    Random rand = new Random();
+                    n = rand.nextInt(a.length + 1);     // number of elements: [0, a.length]
+                    for (int i = 0; i < n; i++)
+                        a[i] = rand.nextInt(50);        // random integer: [0,19]
                     break;
                 case 3:
-                    sort();
+                    if (a.isEmpty())
+                    {
+                        System.out.println("Nothing to sort. Please read or generate keys and try again.");
+                    }
+                    else
+                    {
+                        int i = 0;
+                        while (i < a.size())
+                        {
+                            L.enqueue(a[i]);                
+                        }
+                        while(!L.isEmpty())
+                        {
+                            System.out.print(L.dequeue() + " ");                
+                        }
+                    }
                     break;
                 case 0:
                     break;
@@ -42,73 +74,6 @@ public class HW3
         } while (option != 0);
         
         System.out.println("Thanks for using my program.");
-    }
-
-    /**
-     * 
-     * Read elements from user input into the array until a negative number is entered
-     */ 
-    public void read()
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter elements (negative to end): ");
-        
-        int i;
-        for (i = 0; i < a.length; i++)        // allow at most a.length elements to be stored into the array
-        {
-            int e = input.nextInt();
-            
-            if (e >= 0)
-                a[i] = e;                   // store a non-negative number into the array 
-            else                        
-                break;
-        }
-        n = i;                              // record the total number of elements that have been stored into the array
-        
-    }
-
-     /**
-     * 
-     * Randomly generate non-negative numbers and store them into the array
-     */
-    void randGenerate()
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter the number of keys to generate: ");
-        int n = input.nextInt();
-        
-        Random rand = new Random();
-        
-        n = rand.nextInt(a.length + 1);     // number of elements: [0, a.length]
-        for (int i = 0; i < n; i++)
-            a[i] = rand.nextInt(50);        // random integer: [0,19]
-    }
-
-    /**
-    *
-    * Adds the array elements to the priority queue linked list
-    */
-    void sort()
-    {
-        if (a.isEmpty())
-        {
-            System.out.println("Nothing to sort. Please read or generate keys and try again.");
-        }
-        else
-        {
-            int i = 0;
-            while (i < a.size())
-            {
-                L.enqueue(a[i]);                
-            }
-            while(!L.isEmpty())
-            {
-                System.out.print(L.dequeue() + " ");                
-            }
-        }
-        
-        
-        
     }
 }
 
@@ -173,7 +138,7 @@ class PriorityQueueLinkedList
     }
     
     /**
-     * check if the priority queue linked list is empty
+     * This function checks if the priority queue is empty
      */
     public boolean isEmpty()        //complete
     {
@@ -182,11 +147,10 @@ class PriorityQueueLinkedList
 
     /**
      * 
-     * Insert
+     * This function will insert a new key in the priority queue in the correct non-increasing position.
      */
     public void enqueue(int k)      //complete - I think?
     {
-        Node start  = head;
         Node newNode = new Node(k);
         
         if (isEmpty())
@@ -197,9 +161,11 @@ class PriorityQueueLinkedList
         {
             head.next = newNode;
             head = newNode;
+            //should we set head.next equal to null here?
         }
         else
         {
+            Node start  = head;
             while (start.next != null && start.next.key >= k)
             {
                 start = start.next;
@@ -212,7 +178,7 @@ class PriorityQueueLinkedList
 
     /**
      * 
-     * Delete
+     * This function will remove the highest priority item in the queue and return it.
      */
     public int dequeue(int k)       //complete - I think?
     {
@@ -236,7 +202,7 @@ class PriorityQueueLinkedList
     }
     
     /**
-     * return what the first element is in the priority queue linked list
+     * This function will return what the first element is in the priority queue.
      */
     public int peekFront()
     {
