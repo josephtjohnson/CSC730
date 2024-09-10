@@ -94,14 +94,14 @@ class MyRecursiveFunctions
      * with each line indented two fewer spaces than the previous line
      * 
      * For example, when n is 4, the function will print
-             4
-               3
-                 2
+        4
+            3
+                2
                    1
                    1
-                 2
-               3
-             4
+                2
+            3
+        4
      */
     static void printNumbers(int n)
     {
@@ -118,7 +118,7 @@ class MyRecursiveFunctions
                 System.out.print(n);
             System.out.println();
             
-            printNumbers(n-1, s+1);
+            printNumbers(n-1, s+2);
 
             for (int i = 0; i < s; i++)
                 System.out.print(" ");
