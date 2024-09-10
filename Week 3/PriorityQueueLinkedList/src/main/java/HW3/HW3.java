@@ -79,7 +79,7 @@ class PriorityQueueLinkedList
      * 
      * Constructor: create an empty linked list
      */ 
-    PriorityQueueLinkedList()        
+    PriorityQueueLinkedList()        //complete
     {
         head = null;
     }
@@ -87,7 +87,7 @@ class PriorityQueueLinkedList
     /**
      * check if the priority queue linked list is empty
      */
-    public boolean isEmpty()
+    public boolean isEmpty()        //complete
     {
         return head == null; 
     }
@@ -96,7 +96,7 @@ class PriorityQueueLinkedList
      * 
      * Insert
      */
-    public void enqueue(int k)
+    public void enqueue(int k)      //complete - I think?
     {
         Node start  = head;
         Node newNode = new Node(k);
@@ -119,19 +119,25 @@ class PriorityQueueLinkedList
             
             newNode.next = start.next;
             start.next = newNode;
-        }
-
-        
-        
+        }        
     }
 
     /**
      * 
      * Delete
      */
-    public int dequeue(int k)   
+    public int dequeue(int k)       //complete - I think?
     {
-        return -1;
+        if (!isEmpty)
+        {
+            int item = head.key;
+            head = head.next;
+            return item;
+        }
+        else 
+        {
+            return -1;
+        }
     }
     
     /**
