@@ -12,14 +12,99 @@ import java.util.Scanner;
  */
 public class HW3 
 {
-
     public static void main(String[] args) 
     {
-        Scanner input = new Scanner(System.in);
-        int key;
 
         PriorityQueueLinkedList L = new PriorityQueueLinkedList();
+        Scanner input = new Scanner(System.in);
+        int option;
+        do
+        {
+            System.out.println("Select from:\n1. Read keys\n2. Generate keys\n3. Sort\n0. Quit");
+            option = input.nextInt();
+            switch (option)
+            {
+                case 1:
+                    arr.read();
+                    break;
+                case 2:
+                    arr.randGenerate();
+                    break;
+                case 3:
+                    arr.sort();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid option!  Try again: ");
+            }
+            
+        } while (option != 0);
+        
+        System.out.println("Thanks for using my program.");
+    }
+    
+    static void sort()
+    {
+        Scanner input = new Scanner(System.in);
+        int sortOption;
+        do
+        {
+            System.out.println("Select from:\n1. Bubble sort\n2. Selection sort\n3. Insertion sort\n0. Quit");
+            sortOption = input.nextInt();
+            switch (sortOption)
+            {
+                case 1:
+                    ar.bubbleSort();
+                    break;
+                case 2:
+                    ar.selectionSort();
+                    break;
+                case 3:
+                    ar.insertionSort();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid sort option!  Try again: ");
+            }
+        } while (sortOption != 0);
+    }
 
+    /**
+     * 
+     * Read elements from user input into the array until a negative number is entered
+     */ 
+    public void read()
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter elements (negative to end): ");
+        
+        int i;
+        for (i = 0; i < a.length; i++)        // allow at most a.length elements to be stored into the array
+        {
+            int e = input.nextInt();
+            
+            if (e >= 0)
+                a[i] = e;                   // store a non-negative number into the array 
+            else                        
+                break;
+        }
+        n = i;                              // record the total number of elements that have been stored into the array
+        
+    }
+
+     /**
+     * 
+     * Randomly generate non-negative numbers and store them into the array
+     */
+    void randGenerate()
+    {
+        Random rand = new Random();
+        
+        n = rand.nextInt(a.length + 1);     // number of elements: [0, a.length]
+        for (int i = 0; i < n; i++)
+            a[i] = rand.nextInt(20);        // random integer: [0,19]
     }
     
 }
