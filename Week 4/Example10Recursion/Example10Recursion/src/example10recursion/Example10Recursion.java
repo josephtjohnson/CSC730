@@ -103,6 +103,30 @@ class MyRecursiveFunctions
                3
              4
      */
+    static void printNumbers(int n)
+    {
+        printNumbers(n,0);         
+    }
+
+    static void printNumbers(int n, int s)
+    {
+        if (n>0)
+        {
+            for (int i = 0; i < s; i++)
+                System.out.print(" ");
+            for (int i = n-1; i < n; i++)
+                System.out.print(n);
+            System.out.println();
+            
+            printNumbers(n-1, s+1);
+
+            for (int i = 0; i < s; i++)
+                System.out.print(" ");
+            for (int i = n-1; i < n; i++)
+                System.out.print(n);
+            System.out.println();
+        }
+    }
 }
 
 
