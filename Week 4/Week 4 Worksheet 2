@@ -6,12 +6,20 @@ void f1(int n)
     {
       f1(n-1);
       for (int i=0; i<n; i++)
-      System.out.print("*");
+        System.out.print("*");
       System.out.println();
     }
 }
+
 1. Describe what the function does.
+This function will print a left-aligned triangle made of asterisks. The function will begin by print 1 asterisk and will increase the number of asterisks printed until n rows have been printed. The last row
+will contain n number of asterisks and each row before it will be n-1. It will call itself recursively until the base case is reached.
+
 2. What will be the result of the function call f1(4)?
+*
+**
+***
+****
 
 
 
@@ -27,14 +35,23 @@ void f2(int n, int s)
   {
     f2(n-1, s+1);
     for (int i=0; i<s; i++)
-    System.out.print(" ");
+      System.out.print(" ");
     for (int i=0; i<n; i++)
-    System.out.print("*");
+      System.out.print("*");
     System.out.println();
   }
 }
+
 1. Describe what the functions do.
+The first function is a helper function to simplify the calling of the recursive function. The second function is our recursive function and it will print n number of right-aligned rows of asterisks.
+The final row will have n number of asterisks and s number of spaces. each row before it will have n-1 number of asterisks with s+1 number of spaces. It will call itself recursively until the base 
+case is reached.
+
 2. What will be the result of the function call f2(4)?
+   *
+  **
+ ***
+****
 
 
 Problem 3
