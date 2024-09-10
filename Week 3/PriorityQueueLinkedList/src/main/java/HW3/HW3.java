@@ -14,7 +14,7 @@ public class HW3
 {
     public static void main(String[] args) 
     {
-
+        ArrayList<int> a = new ArrayList<int>();
         PriorityQueueLinkedList L = new PriorityQueueLinkedList();
         Scanner input = new Scanner(System.in);
         int option;
@@ -25,13 +25,13 @@ public class HW3
             switch (option)
             {
                 case 1:
-                    arr.read();
+                    a.read();
                     break;
                 case 2:
-                    arr.randGenerate();
+                    a.randGenerate();
                     break;
                 case 3:
-                    arr.sort();
+                    sort();
                     break;
                 case 0:
                     break;
@@ -42,33 +42,6 @@ public class HW3
         } while (option != 0);
         
         System.out.println("Thanks for using my program.");
-    }
-    
-    static void sort()
-    {
-        Scanner input = new Scanner(System.in);
-        int sortOption;
-        do
-        {
-            System.out.println("Select from:\n1. Bubble sort\n2. Selection sort\n3. Insertion sort\n0. Quit");
-            sortOption = input.nextInt();
-            switch (sortOption)
-            {
-                case 1:
-                    ar.bubbleSort();
-                    break;
-                case 2:
-                    ar.selectionSort();
-                    break;
-                case 3:
-                    ar.insertionSort();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Invalid sort option!  Try again: ");
-            }
-        } while (sortOption != 0);
     }
 
     /**
@@ -100,13 +73,43 @@ public class HW3
      */
     void randGenerate()
     {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of keys to generate: ");
+        int n = input.nextInt();
+        
         Random rand = new Random();
         
         n = rand.nextInt(a.length + 1);     // number of elements: [0, a.length]
         for (int i = 0; i < n; i++)
-            a[i] = rand.nextInt(20);        // random integer: [0,19]
+            a[i] = rand.nextInt(50);        // random integer: [0,19]
     }
-    
+
+    /**
+    *
+    * Adds the array elements to the priority queue linked list
+    */
+    void sort()
+    {
+        if (a.isEmpty())
+        {
+            System.out.println("Nothing to sort. Please read or generate keys and try again.");
+        }
+        else
+        {
+            int i = 0;
+            while (i < a.size())
+            {
+                L.enqueue(a[i]);                
+            }
+            while(!L.isEmpty())
+            {
+                System.out.print(L.dequeue() + " ");                
+            }
+        }
+        
+        
+        
+    }
 }
 
 /**
@@ -186,13 +189,13 @@ class PriorityQueueLinkedList
         Node start  = head;
         Node newNode = new Node(k);
         
-        if (head == null)
+        if (isEmpty())
         {
             head = newNode;
         }
-        else if (head.key > k)
+        else if (peekFront()) > k)
         {
-            newNode.next = head;
+            head.next = newNode;
             head = newNode;
         }
         else
@@ -216,7 +219,14 @@ class PriorityQueueLinkedList
         if (!isEmpty)
         {
             int item = head.key;
-            head = head.next;
+            if (head.next != null)
+            {
+                head = head.next;
+            }
+            else
+            {
+                head = null;                
+            }
             return item;
         }
         else 
@@ -230,6 +240,10 @@ class PriorityQueueLinkedList
      */
     public int peekFront()
     {
+        if (isEmpty)
+        {
+            return -1;        
+        }
         return head.key;
     }
     
