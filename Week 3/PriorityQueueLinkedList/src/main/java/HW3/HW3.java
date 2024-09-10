@@ -4,6 +4,8 @@
 
 package HW3;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,7 +16,7 @@ public class HW3
 {
     public static void main(String[] args) 
     {
-        ArrayList<int> a = new ArrayList<int>();
+        ArrayList<Integer> a = new ArrayList<>();
         PriorityQueueLinkedList L = new PriorityQueueLinkedList();
         Scanner input = new Scanner(System.in);
         int option;
@@ -22,30 +24,29 @@ public class HW3
         {
             System.out.println("Select from:\n1. Read keys\n2. Generate keys\n3. Sort\n0. Quit");
             option = input.nextInt();
+            int i = 0;
             switch (option)
             {
                 case 1:
-                    Scanner input = new Scanner(System.in);
+                    input = new Scanner(System.in);
                     System.out.print("Enter elements (negative to end): ");
-                    int i;
-                    for (i = 0; i < a.length; i++)        // allow at most a.length elements to be stored into the array
+                    int e = 0;
+                    e = input.nextInt();
+                    
+                    while (e != -1)
                     {
-                        int e = input.nextInt();
-                        
-                        if (e >= 0)
-                            a[i] = e;                   // store a non-negative number into the array 
-                        else                        
-                            break;
-                    }
+                        a.add(e);
+                        e = input.nextInt();
+                    }                        
                     break;
                 case 2:
-                    Scanner input = new Scanner(System.in);
+                    input = new Scanner(System.in);
                     System.out.print("Enter the number of keys to generate: ");
                     int n = input.nextInt();
                     Random rand = new Random();
-                    n = rand.nextInt(a.length + 1);     // number of elements: [0, a.length]
-                    for (int i = 0; i < n; i++)
-                        a[i] = rand.nextInt(50);        // random integer: [0,19]
+                    //n = rand.nextInt(a.size() + 1);     // number of elements: [0, a.length]
+                    for (i = 0; i < n; i++)
+                        a.add(rand.nextInt(50));        // random integer: [0,19]
                     break;
                 case 3:
                     if (a.isEmpty())
@@ -54,15 +55,16 @@ public class HW3
                     }
                     else
                     {
-                        int i = 0;
+                        i = 0;
                         while (i < a.size())
                         {
-                            L.enqueue(a[i]);                
+                            L.enqueue(a.remove(i));                
                         }
                         while(!L.isEmpty())
                         {
                             System.out.print(L.dequeue() + " ");                
                         }
+                        System.out.println();
                     }
                     break;
                 case 0:
@@ -151,21 +153,21 @@ class PriorityQueueLinkedList
      */
     public void enqueue(int k)      //complete - I think?
     {
+        Node start  = head;
         Node newNode = new Node(k);
         
         if (isEmpty())
         {
             head = newNode;
         }
-        else if (peekFront()) > k)
+        else if (peekFront() < k)
         {
-            head.next = newNode;
+            newNode.next = head;
             head = newNode;
             //should we set head.next equal to null here?
         }
         else
         {
-            Node start  = head;
             while (start.next != null && start.next.key >= k)
             {
                 start = start.next;
@@ -180,9 +182,9 @@ class PriorityQueueLinkedList
      * 
      * This function will remove the highest priority item in the queue and return it.
      */
-    public int dequeue(int k)       //complete - I think?
+    public int dequeue()       //complete - I think?
     {
-        if (!isEmpty)
+        if (!isEmpty())
         {
             int item = head.key;
             if (head.next != null)
@@ -206,7 +208,7 @@ class PriorityQueueLinkedList
      */
     public int peekFront()
     {
-        if (isEmpty)
+        if (isEmpty())
         {
             return -1;        
         }
