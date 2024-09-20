@@ -41,7 +41,8 @@ public class Example13SortSearch
                 case 4:
                     //arr.insertionSort();
                     //arr.selectionSort();
-                    arr.bubbleSort();
+                    //arr.bubbleSort();
+                    arr.largeSearch();
                     break;
                 case 5: 
                     System.out.print("Enter a key: ");
@@ -273,7 +274,24 @@ class MyArray
      * Practice problem:
      * Implement a recursive approach to finding the greatest element in the array without sorting the elements
      */
+    public void largeSearch()
+    {
+        largeSearch(0, n-1);
+    }
     
+    
+    public int largeSearch(int left, int right)
+    {
+        if (left == right)
+            return a[left];
+        
+        int middle = (left + right) / 2;
+        
+        int leftLarge = largeSearch(left,middle);
+        int rightLarge = largeSearch(middle + 1, right);
+        
+        return Math.max(leftLarge, rightLarge);
+    }
     
 }
 
