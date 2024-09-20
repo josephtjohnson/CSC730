@@ -39,7 +39,9 @@ public class Example13SortSearch
                     arr.display();
                     break;
                 case 4:
-                    arr.insertionSort();
+                    //arr.insertionSort();
+                    //arr.selectionSort();
+                    arr.bubbleSort();
                     break;
                 case 5: 
                     System.out.print("Enter a key: ");
@@ -205,6 +207,32 @@ class MyArray
      * Practice problem:
      * Implement a recursive approach to sorting array elements into non-decreasing order using bubble sort algorithm
      */
+    public void bubbleSort ()
+    {
+    	bubbleSort(n);	
+    }
+
+    public void bubbleSort (int n)
+    {
+        if (n == 1)
+            return;
+        
+        int count = 0;
+        for (int i = 0; i < n-1; i++)
+        {
+            if (a[i] > a[i+1])
+            {
+                int t = a[i];
+                a[i] = a[i+1];
+                a[i+1] = t;
+                count = count+1;
+            }
+        }
+        if (count == 0)
+            return;
+        
+        bubbleSort(n-1);
+    }
     
     
     /**
@@ -212,8 +240,34 @@ class MyArray
      * Practice problem:
      * Implement a recursive approach to sorting array elements into non-decreasing order using selection sort algorithm
      */
+    public void selectionSort()
+    {
+        selectionSort(n, 0);
+    }
     
-    
+    public void selectionSort(int n, int s)
+    {
+        
+        if (s < n)
+        {
+            int minIndex = s;
+            for (int i = s; i < n; i++)
+            {
+                if (a[i] <= a[minIndex])
+                {
+                    minIndex = i;
+                }
+            }
+
+            int temp = a[s];
+            a[s] = a[minIndex];
+            a[minIndex] = temp;
+            
+            System.out.println();
+            
+            selectionSort(n,s+1);
+        }
+    }
     /**
      * 
      * Practice problem:
