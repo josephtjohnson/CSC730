@@ -175,11 +175,37 @@ class MyArray
 
         // First of all, sort both the first half and the second half 
         int middle = (left + right) / 2;
-        mergeSort(left, middle);             // sort the first half
-        mergeSort(middle + 1, right);        // sort the second half
+        //mergeSort(left, middle);             // sort the first half
+        //mergeSort(middle + 1, right);        // sort the second half
         
         // Then merge two halves together while maintaining the non-decreasing order among elements in the resulting array
+        //merge(left, middle, right);
+        
+        //start non-recursive option here
+        //sort left first
+        for (int i = left; i < middle; i++)
+        {
+            if (a[i] > a[i+1])
+            {
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+            }
+        }
+        
+        for (int j = middle + 1; j < right; j++)
+        {
+            if (a[j] > a[j+1])
+            {
+                int temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+        
         merge(left, middle, right);
+        
+        
     }
     
     /**
