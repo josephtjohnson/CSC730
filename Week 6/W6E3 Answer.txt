@@ -1,0 +1,25 @@
+#1
+a)
+E:8 B:10 D:20 A:25 C:35
+combine two smallest
+E+B:18 D:20 A:25 C:35
+combine the two smallest
+(E+B)+D:38 A:25 C:35
+combine the two smallest
+A+C:60 ((E+B)+D):38
+((A+C)+((E+B)+D)):98
+
+                    o:98
+                /          \
+              o:38          o:60
+            /      \       /    \
+          o:18      D:20  A:35    C:35
+        /      \
+      E:8        B:10
+
+b)
+E:000
+B:001
+D:01
+A:10
+C:11
