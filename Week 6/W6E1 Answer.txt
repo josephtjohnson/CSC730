@@ -4,6 +4,6 @@ Minimum = 2^0 + 2^1 + 2^2 ... 2^n-1 + 1
 
 #2
 BFS = A B F C G D E H I J K
-Preorder = A B C D E F G I J K H
-Inorder = D C E B A F H G I J K
+Preorder = A B C D E F G H I J K 
+Inorder = D C E B A H G K J I F
 Postorder = D E C B H K J I G F A
